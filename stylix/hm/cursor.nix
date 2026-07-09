@@ -18,10 +18,11 @@ in
       {
         home.pointerCursor = {
           inherit (cfg) name package;
-          enable = true;
+          enable =
+            config.stylix.targets.xresources.enable || config.stylix.targets.gtk.enable;
           size = builtins.floor (cfg.size + 0.5);
-          x11.enable = true;
-          gtk.enable = true;
+          x11.enable = config.stylix.targets.xresources.enable;
+          gtk.enable = config.stylix.targets.gtk.enable;
         };
       };
 }
